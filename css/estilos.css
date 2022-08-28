@@ -1,0 +1,33 @@
+/*RESETEO*/
+body{
+    background-color: rgb(224, 207, 207);
+}
+/*HEADER*/
+.main_header_title{
+    background-color: black;
+    text-align: center;
+    color: white;
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+/*CATALOGO*/
+.catalogo_title{
+    text-align: center;
+}
+.catalogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    row-gap: 20px;
+}
+.catalogo_tarjeta{
+    padding: 20px;
+background-color: black;
+}
