@@ -16,7 +16,7 @@ while(aniadirMasProductos===true){
     }else if(productoSeleccionado === 4){
         totalCompra = totalCompra+250
     }else{
-        productoSeleccionado=parseInt(prompt(`Ingresar producto válido 1.Pantalones - 2.Chaquetas - 3.Zapatos - 4.Accesorio`))
+        productoSeleccionado=parseInt(prompt(`Ingresar producto válido 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
         continue
     }
 
@@ -24,7 +24,7 @@ decidir = parseInt(prompt(`Desea continuar comprando? 1.SI 2.NO`)) // DECISIÓN 
 
 
 if(decidir===1){
-    productoSeleccionado = parseInt(prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalones - 2.Chaquetas - 3.Zapatos - 4.Accesorio`))
+    productoSeleccionado = parseInt(prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
     
     
 }else if(decidir===2){
