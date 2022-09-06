@@ -1,57 +1,3 @@
-let totalCompra = 0
-// SE SOLICITA SELECCIONAR PRODUCTO DESEADO
-let productoSeleccionado = parseInt(
-    prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`)
-    )
-
-let aniadirMasProductos = true
-let decidir
-while(aniadirMasProductos===true){
-    if(productoSeleccionado === 1){
-        totalCompra = totalCompra+ 1200
-    }else if(productoSeleccionado === 2){
-        totalCompra = totalCompra+1700
-    }else if(productoSeleccionado === 3){
-        totalCompra = totalCompra+2000
-    }else if(productoSeleccionado === 4){
-        totalCompra = totalCompra+250
-    }else{
-        productoSeleccionado=parseInt(prompt(`Ingresar producto válido 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
-        continue
-    }
-
-decidir = parseInt(prompt(`Desea continuar comprando? 1.SI 2.NO`)) // DECISIÓN PARA CONTINUAR AÑADIENDO PRODUCTOS
-
-
-if(decidir===1){
-    productoSeleccionado = parseInt(prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
-    
-    
-}else if(decidir===2){
-    aniadirMasProductos = false
-    
-}
-}
-alert(`el valor total de la compra es: `+ totalCompra) // VALOR TOTAL DE LOS PRODUCTOS SELECCIONADOS
-
-function calcularPrecioConCupon(valor){      // SI SE TIENE CUPON SE HACE DESCUENTO
-    let descuento = 0
-    let cupon = parseInt(prompt(`Ingresar cupón para acceder a un descuento: `))
-    if(cupon===100005){
-        descuento = 5
-    }else if(cupon===100010){
-        descuento = 10
-    }else{
-        descuento = 0
-    }
-    let valorDescuento = valor*(descuento/100)
-    valor=valor-valorDescuento
-    return valor
-}
-let valorConDescuento= calcularPrecioConCupon(totalCompra)
-alert(`El costo final de su compra es: `+ valorConDescuento)
-
-
 // ***** PRODUCTOS *****
 
 class Producto{
@@ -130,4 +76,59 @@ const eliminar = (nombre)=>{
     }
 }
 eliminar(pantalonJeanXS) //ELIMINO OBJETO DE PANTALON JEAN
+
+
+let totalCompra = 0
+// SE SOLICITA SELECCIONAR PRODUCTO DESEADO
+let productoSeleccionado = parseInt(
+    prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`)
+    )
+
+let aniadirMasProductos = true
+let decidir
+while(aniadirMasProductos===true){
+    if(productoSeleccionado === 1){
+        totalCompra = totalCompra+ pantalonJeanXL.precio
+    }else if(productoSeleccionado === 2){
+        totalCompra = totalCompra+ pantalonEngomadoXL.precio
+    }else if(productoSeleccionado === 3){
+        totalCompra = totalCompra+ camperaPufferXL.precio
+    }else if(productoSeleccionado === 4){
+        totalCompra = totalCompra+ camperaCuerinaXL.precio
+    }else{
+        productoSeleccionado=parseInt(prompt(`Ingresar producto válido 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
+        continue
+    }
+
+decidir = parseInt(prompt(`Desea continuar comprando? 1.SI 2.NO`)) // DECISIÓN PARA CONTINUAR AÑADIENDO PRODUCTOS
+
+
+if(decidir===1){
+    productoSeleccionado = parseInt(prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`))
+    
+    
+}else if(decidir===2){
+    aniadirMasProductos = false
+    
+}
+}
+alert(`el valor total de la compra es: `+ totalCompra) // VALOR TOTAL DE LOS PRODUCTOS SELECCIONADOS
+
+function calcularPrecioConCupon(valor){      // SI SE TIENE CUPON SE HACE DESCUENTO
+    let descuento = 0
+    let cupon = parseInt(prompt(`Ingresar cupón para acceder a un descuento: `))
+    if(cupon===100005){
+        descuento = 5
+    }else if(cupon===100010){
+        descuento = 10
+    }else{
+        descuento = 0
+    }
+    let valorDescuento = valor*(descuento/100)
+    valor=valor-valorDescuento
+    return valor
+}
+let valorConDescuento= calcularPrecioConCupon(totalCompra)
+alert(`El costo final de su compra es: `+ valorConDescuento)
+
 
