@@ -27,9 +27,9 @@ const pantalonJeanXS=new Producto("pantalon","jean con tachas","claro","XS", 120
 
 // ARRAY PANTALON JEAN CON TACHAS
 
-//const pantalonJean = [pantalonJeanXL,pantalonJeanL,pantalonJeanM,pantalonJeanS, pantalonJeanXS]
+
 const pantalonJean =[];
-pantalonJean.push(pantalonJeanXL, pantalonJeanL, pantalonJeanM, pantalonJeanS, pantalonJeanXS);
+
 
 //PANTALON ENGOMADO NEGRO
 const pantalonEngomadoXL=new Producto("pantalon","Engomado","Negro","XL",1700, 10)
@@ -39,13 +39,13 @@ const pantalonEngomadoS=new Producto("pantalon","Engomado","Negro","S",1700, 10)
 
 //ARRAY PANTALON ENGOMADO NEGRO
 
-//const pantalonEngomado = [pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS]
+
 const pantalonEngomado =[];
-pantalonEngomado.push(pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS);
+
 
 // ARRAY DE TODOS LOS PANTALONES
 const pantalones =[] ;
-pantalones.push(pantalonJean, pantalonEngomado);
+
 
 // ***** MODELOS DE CAMPERAS DIFERENCIADOS POR TALLE *****
 
@@ -55,9 +55,9 @@ const camperaPufferL=new Producto("campera","Puffer","Negro","L", 2500, 10)
 const camperaPufferM=new Producto("campera","Puffer","Negro","M", 2500, 10)
 const camperaPufferS=new Producto("campera","Puffer","Negro","S", 2500, 10)
 
-//const camperaPuffer = [camperaPufferXL,camperaPufferL,camperaPufferM,camperaPufferS]
+
 const camperaPuffer =[];
-camperaPuffer.push(camperaPufferXL, camperaPufferL, camperaPufferM, camperaPufferS);
+
 
 //CAMPERAS CUERINA
 const camperaCuerinaXL=new Producto("campera","Cuerina","Negro","XL", 2200, 10)
@@ -65,28 +65,39 @@ const camperaCuerinaL=new Producto("campera","Cuerina","Negro","L", 2200, 10)
 const camperaCuerinaM=new Producto("campera","Cuerina","Negro","M", 2200, 10)
 const camperaCuerinaS=new Producto("campera","Cuerina","Negro","S", 2200, 10)
 
-//const camperaCuerina =[camperaCuerinaXL,camperaCuerinaL,camperaCuerinaM,camperaCuerinaS]
 const camperaCuerina =[];
-camperaCuerina.push(camperaCuerinaXL, camperaCuerinaL, camperaCuerinaM, camperaCuerinaS);
+
 
 // ARRAY DE TODAS LAS CAMPERAS
 const camperas = [];
+
+
+// ingreso elementos a arrays vacios
+pantalonJean.push(pantalonJeanXL, pantalonJeanL, pantalonJeanM, pantalonJeanS, pantalonJeanXS);
+pantalonEngomado.push(pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS);
+pantalones.push(pantalonJean, pantalonEngomado);
+camperaPuffer.push(camperaPufferXL, camperaPufferL, camperaPufferM, camperaPufferS);
+camperaCuerina.push(camperaCuerinaXL, camperaCuerinaL, camperaCuerinaM, camperaCuerinaS);
 camperas.push(camperaPuffer, camperaCuerina);
 
-pantalonJeanXL.cambiarCantidad(3); // CAMBIO LA CANTIDAD DEL STOCK EN LOS PANTALONES DE JEAN TALLE XL A 3
+// CAMBIO LA CANTIDAD DEL STOCK EN LOS PANTALONES DE JEAN TALLE XL A 3
+pantalonJeanXL.cambiarCantidad(3); 
 
-for(const pantalon of pantalonEngomado){ // CAMBIO EL PRECIO DE TODOS LOS TALLES DE PANTALON ENGOMADO A 1650
+// CAMBIO EL PRECIO DE TODOS LOS TALLES DE PANTALON ENGOMADO A 1650
+for(const pantalon of pantalonEngomado){ 
     pantalon.cambiarPrecio(1650)
 }
-console.log(pantalones); // DESPLIEGO MI ARRAY ACTUALIZADO EN LA CONSOLA.
 
+//ELIMINO OBJETO DE PANTALON JEAN
 const eliminar = (nombre)=>{
     let index = pantalonJean.indexOf(nombre)
     if (index != -1){
         pantalonJean.splice(index,1)
     }
 }
-eliminar(pantalonJeanXS) //ELIMINO OBJETO DE PANTALON JEAN
+eliminar(pantalonJeanXS) 
+
+console.log(camperas, pantalones); 
 
 
 // ***** ALGORITMO PARA CALCULAR COSTO TOTAL DE PRODUCTOS SELECCIONADOS ******
