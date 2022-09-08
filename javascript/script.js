@@ -16,51 +16,62 @@ class Producto{
         this.cantidad=nuevaCantidad;
     }
 }
-// ***** MODELOS DE PANTALONES DIFERENCIADOS POR TALLE *****
+//  MODELOS DE PANTALONES DIFERENCIADOS POR TALLE 
 
 //PANTALON JEAN CON TACHAS - OBJETOS
-let pantalonJeanXL=new Producto("pantalon","jean con tachas","claro","XL", 1200,10)
-let pantalonJeanL=new Producto("pantalon","jean con tachas","claro","L", 1200, 10)
-let pantalonJeanM=new Producto("pantalon","jean con tachas","claro","M", 1200, 10)
-let pantalonJeanS=new Producto("pantalon","jean con tachas","claro","S", 1200, 10)
-let pantalonJeanXS=new Producto("pantalon","jean con tachas","claro","XS", 1200, 10)
+const pantalonJeanXL=new Producto("pantalon","jean con tachas","claro","XL", 1200,10)
+const pantalonJeanL=new Producto("pantalon","jean con tachas","claro","L", 1200, 10)
+const pantalonJeanM=new Producto("pantalon","jean con tachas","claro","M", 1200, 10)
+const pantalonJeanS=new Producto("pantalon","jean con tachas","claro","S", 1200, 10)
+const pantalonJeanXS=new Producto("pantalon","jean con tachas","claro","XS", 1200, 10)
 
 // ARRAY PANTALON JEAN CON TACHAS
 
-let pantalonJean = [pantalonJeanXL,pantalonJeanL,pantalonJeanM,pantalonJeanS, pantalonJeanXS]
+//const pantalonJean = [pantalonJeanXL,pantalonJeanL,pantalonJeanM,pantalonJeanS, pantalonJeanXS]
+const pantalonJean =[];
+pantalonJean.push(pantalonJeanXL, pantalonJeanL, pantalonJeanM, pantalonJeanS, pantalonJeanXS);
 
 //PANTALON ENGOMADO NEGRO
-let pantalonEngomadoXL=new Producto("pantalon","Engomado","Negro","XL",1700, 10)
-let pantalonEngomadoL=new Producto("pantalon","Engomado","Negro","L", 1700, 10)
-let pantalonEngomadoM=new Producto("pantalon","Engomado","Negro","M", 1700, 10)
-let pantalonEngomadoS=new Producto("pantalon","Engomado","Negro","S",1700, 10)
+const pantalonEngomadoXL=new Producto("pantalon","Engomado","Negro","XL",1700, 10)
+const pantalonEngomadoL=new Producto("pantalon","Engomado","Negro","L", 1700, 10)
+const pantalonEngomadoM=new Producto("pantalon","Engomado","Negro","M", 1700, 10)
+const pantalonEngomadoS=new Producto("pantalon","Engomado","Negro","S",1700, 10)
 
 //ARRAY PANTALON ENGOMADO NEGRO
 
-let pantalonEngomado = [pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS]
+//const pantalonEngomado = [pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS]
+const pantalonEngomado =[];
+pantalonEngomado.push(pantalonEngomadoXL,pantalonEngomadoL,pantalonEngomadoM,pantalonEngomadoS);
 
-let pantalones =[pantalonJean, pantalonEngomado] // ARRAY DE TODOS LOS PANTALONES
+// ARRAY DE TODOS LOS PANTALONES
+const pantalones =[] ;
+pantalones.push(pantalonJean, pantalonEngomado);
 
 // ***** MODELOS DE CAMPERAS DIFERENCIADOS POR TALLE *****
 
 //CAMPERAS PUFFER
-let camperaPufferXL=new Producto("campera","Puffer","Negro","XL", 2500, 10)
-let camperaPufferL=new Producto("campera","Puffer","Negro","L", 2500, 10)
-let camperaPufferM=new Producto("campera","Puffer","Negro","M", 2500, 10)
-let camperaPufferS=new Producto("campera","Puffer","Negro","S", 2500, 10)
+const camperaPufferXL=new Producto("campera","Puffer","Negro","XL", 2500, 10)
+const camperaPufferL=new Producto("campera","Puffer","Negro","L", 2500, 10)
+const camperaPufferM=new Producto("campera","Puffer","Negro","M", 2500, 10)
+const camperaPufferS=new Producto("campera","Puffer","Negro","S", 2500, 10)
 
-let camperaPuffer = [camperaPufferXL,camperaPufferL,camperaPufferM,camperaPufferS]
+//const camperaPuffer = [camperaPufferXL,camperaPufferL,camperaPufferM,camperaPufferS]
+const camperaPuffer =[];
+camperaPuffer.push(camperaPufferXL, camperaPufferL, camperaPufferM, camperaPufferS);
 
 //CAMPERAS CUERINA
-let camperaCuerinaXL=new Producto("campera","Cuerina","Negro","XL", 2200, 10)
-let camperaCuerinaL=new Producto("campera","Cuerina","Negro","L", 2200, 10)
-let camperaCuerinaM=new Producto("campera","Cuerina","Negro","M", 2200, 10)
-let camperaCuerinaS=new Producto("campera","Cuerina","Negro","S", 2200, 10)
+const camperaCuerinaXL=new Producto("campera","Cuerina","Negro","XL", 2200, 10)
+const camperaCuerinaL=new Producto("campera","Cuerina","Negro","L", 2200, 10)
+const camperaCuerinaM=new Producto("campera","Cuerina","Negro","M", 2200, 10)
+const camperaCuerinaS=new Producto("campera","Cuerina","Negro","S", 2200, 10)
 
-let camperaCuerina =[camperaCuerinaXL,camperaCuerinaL,camperaCuerinaM,camperaCuerinaS]
+//const camperaCuerina =[camperaCuerinaXL,camperaCuerinaL,camperaCuerinaM,camperaCuerinaS]
+const camperaCuerina =[];
+camperaCuerina.push(camperaCuerinaXL, camperaCuerinaL, camperaCuerinaM, camperaCuerinaS);
 
-let camperas = [camperaPuffer, camperaCuerina]   // ARRAY DE TODAS LAS CAMPERAS
-
+// ARRAY DE TODAS LAS CAMPERAS
+const camperas = [];
+camperas.push(camperaPuffer, camperaCuerina);
 
 pantalonJeanXL.cambiarCantidad(3); // CAMBIO LA CANTIDAD DEL STOCK EN LOS PANTALONES DE JEAN TALLE XL A 3
 
@@ -78,7 +89,10 @@ const eliminar = (nombre)=>{
 eliminar(pantalonJeanXS) //ELIMINO OBJETO DE PANTALON JEAN
 
 
+// ***** ALGORITMO PARA CALCULAR COSTO TOTAL DE PRODUCTOS SELECCIONADOS ******
+
 let totalCompra = 0
+
 // SE SOLICITA SELECCIONAR PRODUCTO DESEADO
 let productoSeleccionado = parseInt(
     prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.Pantalon jean con tachas - 2.Pantalon engomado negro - 3.Campera puffer - 4.Campera cuerina`)
