@@ -22,7 +22,7 @@ class Producto{
               <div class="card-body">
                <h5 class="card-title">${this.nombre}</h5>
                <p class="card-text">${this.desc}</p>
-               <button id=${this.id} class="btn btn-primary">Precio del producto $${this.precio}</button>
+               <button id=${this.id} class="btn btn-primary class="boton-agregar"">Precio del producto $${this.precio}</button>
               </div>
             </div>
         `
@@ -33,7 +33,8 @@ class Producto{
         const btnAgregar = document.getElementById(this.id)
         const productoEncontrado = productos.find(productos => productos.id === this.id)
         btnAgregar.addEventListener(`click`,()=>agregarAlCarrito(productoEncontrado))
-    }
+    }    
+
 }
 //  **** PRODUCTOS ****
 
@@ -68,6 +69,29 @@ camperaPufferCamel.cambiarPrecio(2650)
 // **** CARRITO DE COMPRAS ****//
 let productos = [];
 let carrito =[];
+const contenedorCarrito = document.getElementById('carrito-contenedor')
+const botonVaciar = document.getElementById('vaciar-carrito')
+const contadorCarrito = document.getElementById('cartCounter')
+
+//OCTAVO PASO
+const cantidad = document.getElementById('cantidad')
+const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
+
+//json
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
+    }
+})
+
+//BOTON VACIAR CARRITO
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
+})
+
 productos.push(pantalonJeanWideLeg, pantalonJeanSkinny, pantalonJeanOxford, pantalonEngomado, pantalonEngomadoVerde, pantalonEngomadoCamel,camperaPufferNegra, camperaPufferRosa, camperaPufferCamel,camperaCuerinaNegra,camperaCuerinaCamel,camperaCuerinaPlatinada)
 console.log(productos)
 productos.forEach(e =>{
@@ -76,10 +100,11 @@ productos.forEach(e =>{
 productos.forEach(e =>{
     e.agregarEvento()
 })
+
 function agregarAlCarrito(producto){
 let enCarrito = carrito.find(prod => prod.id ===producto.id)
 if(!enCarrito){
-    carrito.push({...producto,cantidad:1})
+    carrito.push({...producto,cantidad:1}) 
 }else{
     let carritoFiltrado = carrito.filter(prod =>prod.id != producto.id)
     carrito =[
@@ -87,66 +112,71 @@ if(!enCarrito){
         {...enCarrito, cantidad: enCarrito.cantidad + 1}
     ]
 }
+actualizarCarrito()
 console.log(carrito)
 contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
+
 }
 
 const contador = document.getElementById(`cartCounter`)
 contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 
-// ***** ALGORITMO PARA CALCULAR COSTO TOTAL DE PRODUCTOS SELECCIONADOS ******
+// 5 - QUINTO PASO
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
 
-let totalCompra = 0
+    const indice = carrito.indexOf(item) //Busca el elemento q yo le pase y nos devuelve su indice.
 
-// SE SOLICITA SELECCIONAR PRODUCTO DESEADO
-let productoSeleccionado = parseInt(
-    prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.pantalonJeanWideLeg - 2.Pantalon engomado negro - 3.Campera puffer negra - 4.Campera cuerina negra`)
-    )
-
-let aniadirMasProductos = true
-let decidir
-while(aniadirMasProductos===true){
-    if(productoSeleccionado === 1){
-        totalCompra = totalCompra+ pantalonJeanWideLeg.precio
-    }else if(productoSeleccionado === 2){
-        totalCompra = totalCompra+ pantalonEngomado.precio
-    }else if(productoSeleccionado === 3){
-        totalCompra = totalCompra+ camperaPufferNegra.precio
-    }else if(productoSeleccionado === 4){
-        totalCompra = totalCompra+ camperaCuerinaNegra.precio
-    }else{
-        productoSeleccionado=parseInt(prompt(`Ingresar producto válido 1.pantalonJeanWideLeg - 2.Pantalon engomado negro - 3.Campera puffer negra - 4.Campera cuerina negra`))
-        continue
-    }
-
-decidir = parseInt(prompt(`Desea continuar comprando? 1.SI 2.NO`)) // DECISIÓN PARA CONTINUAR AÑADIENDO PRODUCTOS
-
-
-if(decidir===1){
-    productoSeleccionado = parseInt(prompt(`Ingresar el tipo de producto que quiere agregar al carrito 1.pantalonJeanWideLeg - 2.Pantalon engomado negro - 3.Campera puffer negra - 4.Campera cuerina negra`))
-    
-    
-}else if(decidir===2){
-    aniadirMasProductos = false
-    
+    carrito.splice(indice, 1) //Le pasamos el indice de mi elemento ITEM y borramos 
+    // un elemento 
+    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
+    //MODIFICA EL CARRITO
+    console.log(carrito)
 }
-}
-alert(`el valor total de la compra es: `+ totalCompra) // VALOR TOTAL DE LOS PRODUCTOS SELECCIONADOS
 
-function calcularPrecioConCupon(valor){      // SI SE TIENE CUPON SE HACE DESCUENTO
-    let descuento = 0
-    let cupon = parseInt(prompt(`Ingresar cupón para acceder a un descuento: `))
-    if(cupon===100005){
-        descuento = 5
-    }else if(cupon===100010){
-        descuento = 10
-    }else{
-        descuento = 0
-    }
-    let valorDescuento = valor*(descuento/100)
-    valor=valor-valorDescuento
-    return valor
+const actualizarCarrito = ()=>{
+    contenedorCarrito.innerHTML=""
+
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    })
+    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
+    //empezando en 0.
 }
-let valorConDescuento= calcularPrecioConCupon(totalCompra)
-alert(`El costo final de su compra es: `+ valorConDescuento)
- 
+
+// MODAL CARRITO 
+
+const contenedorModal = document.getElementsByClassName('modal-contenedor')[0]
+const botonAbrir = document.getElementById('boton-carrito')
+const botonCerrar = document.getElementById('carritoCerrar')
+const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
+
+
+botonAbrir.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+botonCerrar.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+
+contenedorModal.addEventListener('click', (event) =>{
+    contenedorModal.classList.toggle('modal-active')
+
+})
+modalCarrito.addEventListener('click', (event) => {
+    event.stopPropagation() //cuando clickeo sobre el modal se finaliza la propagacion del click a los elementos
+    //padre
+})
