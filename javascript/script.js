@@ -73,17 +73,17 @@ const contenedorCarrito = document.getElementById('carrito-contenedor')
 const botonVaciar = document.getElementById('vaciar-carrito')
 const contadorCarrito = document.getElementById('cartCounter')
 
-//OCTAVO PASO
+//CONSTANTES
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
 //json
 document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('carrito')){
+     if (localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'))
         actualizarCarrito()
-    }
+    } 
 })
 
 //BOTON VACIAR CARRITO
@@ -121,7 +121,7 @@ contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 const contador = document.getElementById(`cartCounter`)
 contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 
-// 5 - QUINTO PASO
+// ELIMINAR DEL CARRITO
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
 
@@ -134,6 +134,7 @@ const eliminarDelCarrito = (prodId) => {
     console.log(carrito)
 }
 
+//ACTUALIZAR CARRITO
 const actualizarCarrito = ()=>{
     contenedorCarrito.innerHTML=""
 
