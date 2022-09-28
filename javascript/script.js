@@ -17,12 +17,12 @@ class Producto{
     }
     desplegarProductos(){               //METODO PARA DESPLEGAR LOS PRODUCTOS EN TARJETAS
         const card = `
-            <div class="card catalogo_tarjeta " style="width: 18rem;">
-              <img src=${this.img} class="card-img-top" alt="foto del producto">
+            <div class="card catalogo_tarjeta efectoTarjeta " style="width: 18rem;">
+              <img src=${this.img} class="card-img-top ajusteImagen" alt="foto del producto">
               <div class="card-body">
                <h5 class="card-title">${this.nombre}</h5>
                <p class="card-text">${this.desc}</p>
-               <button id=${this.id} class="btn btn-primary class="boton-agregar"">Precio del producto $${this.precio}</button>
+               <button id=${this.id} class="btn btn-primary class="boton-agregar"">Agregar al carrito $${this.precio}</button>
               </div>
             </div>
         `
@@ -90,16 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     actualizarCarrito()
+    localStorage.removeItem(`carrito`, JSON.stringify(carrito))
 })
 
+//PUSHEO PRODUCTOS AL ARRAY PRODUCTOS
 productos.push(pantalonJeanWideLeg, pantalonJeanSkinny, pantalonJeanOxford, pantalonEngomado, pantalonEngomadoVerde, pantalonEngomadoCamel,camperaPufferNegra, camperaPufferRosa, camperaPufferCamel,camperaCuerinaNegra,camperaCuerinaCamel,camperaCuerinaPlatinada)
 console.log(productos)
+
+//A CADA PRODUCTO SE LE APLICA DESPLEGAR PRODUCTO
 productos.forEach(e =>{
     e.desplegarProductos()
 })
 productos.forEach(e =>{
     e.agregarEvento()
 })
+
+//FUNCION AGREGAR AL CARRITO
 
 function agregarAlCarrito(producto){
 let enCarrito = carrito.find(prod => prod.id ===producto.id)
@@ -117,7 +123,7 @@ console.log(carrito)
 contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 
 }
-
+// CONTADOR DE CANTIDAD DE CADA PRODUCTO
 const contador = document.getElementById(`cartCounter`)
 contador.innerHTML = carrito.reduce((acc,prod)=> acc + prod.cantidad, 0)
 
@@ -127,10 +133,9 @@ const eliminarDelCarrito = (prodId) => {
 
     const indice = carrito.indexOf(item) //Busca el elemento q yo le pase y nos devuelve su indice.
 
-    carrito.splice(indice, 1) //Le pasamos el indice de mi elemento ITEM y borramos 
-    // un elemento 
-    actualizarCarrito() //LLAMAMOS A LA FUNCION QUE CREAMOS EN EL TERCER PASO. CADA VEZ Q SE 
-    //MODIFICA EL CARRITO
+    carrito.splice(indice, 1) //Le paso el indice de mi elemento ITEM y borro un elemento 
+
+    actualizarCarrito() //LLAMAMOS A LA FUNCION actualizarCarrito CADA VEZ Q SE MODIFICA EL CARRITO
     console.log(carrito)
 }
 
@@ -152,10 +157,11 @@ const actualizarCarrito = ()=>{
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
     })
-    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+    contadorCarrito.innerText = carrito.length // actualizo con la longitud del carrito.
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
     //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
     //empezando en 0.
+    
 }
 
 // MODAL CARRITO 
@@ -165,14 +171,15 @@ const botonAbrir = document.getElementById('boton-carrito')
 const botonCerrar = document.getElementById('carritoCerrar')
 const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
 
-
+//boton con icono de carrito cuando lo apreto despliega modal y cuando lo vuelvo a precionar oculta modal
 botonAbrir.addEventListener('click', ()=>{
     contenedorModal.classList.toggle('modal-active')
 })
+// boton de cerrar modal
 botonCerrar.addEventListener('click', ()=>{
     contenedorModal.classList.toggle('modal-active')
 })
-
+// cuando hago un click se cierra al igual q con el boton cerrar modal
 contenedorModal.addEventListener('click', (event) =>{
     contenedorModal.classList.toggle('modal-active')
 
@@ -181,3 +188,45 @@ modalCarrito.addEventListener('click', (event) => {
     event.stopPropagation() //cuando clickeo sobre el modal se finaliza la propagacion del click a los elementos
     //padre
 })
+
+// FUNCIONALIDAD DE COMPRAR - USO LIBRERIA SWEET ALERT Y LA MODIFICO
+const botonComprar = document.getElementById(`comprar`)
+botonComprar.addEventListener(`click`,ejecutarCompra)
+function ejecutarCompra(){
+    Swal.fire({
+        title: 'Mi Compra',
+        text: `Importe total: $${precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)} 
+        - Ingresar los datos de la Tarjeta `,
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off',
+          placeholder:`Ingrese el número de su tarjeta`
+        },
+        
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar Compra',
+        showLoaderOnConfirm: true,
+        preConfirm: (login) => {
+          return fetch(`//api.github.com/users/${login}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(response.statusText)
+              }
+              return response.json()
+            })
+            .catch(error => {
+              Swal.showValidationMessage(
+                `Request failed: ${error}`
+              )
+            })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: `Su compra fue exitosa`,
+            imageUrl: `https://media.istockphoto.com/vectors/finalise-sale-shopping-cart-icon-vector-id846434820?k=20&m=846434820&s=170667a&w=0&h=WMlngTvXHR9Fb4TINZbuWBGovMHL3TZb0MSCL5iG_AY=`
+          })
+        }
+      })
+}

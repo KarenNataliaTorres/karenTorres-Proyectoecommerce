@@ -47,6 +47,7 @@ text-decoration: none;
 }
 .catalogo_title{
     text-align: center;
+    padding: 30px;
 }
 .catalogo{
     display: flex;
@@ -66,6 +67,22 @@ text-decoration: none;
     justify-items: center;
     gap: 1em;
 }
+
+/*ajuste de imagenes tarjetas*/
+.ajusteImagen{
+    width: 230px;
+    height: 230px;
+    overflow: hidden;
+    margin: 5px;
+    position: relative;
+}
+.efectoTarjeta:hover{
+    border: 5px solid rgb(82, 62, 213) ;
+    transform: scale(1.05, 1.05);
+    transition: 1s;
+}
+
+
 /*CARRITO*/
 
 .carro{
@@ -199,5 +216,4 @@ width: 30px;
     align-content: center;
     align-items: center;
 }
-
 
