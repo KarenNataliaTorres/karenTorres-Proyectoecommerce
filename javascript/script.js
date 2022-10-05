@@ -231,7 +231,7 @@ function ejecutarCompra(){
       })
 }
 
-//FETCH
+//FETCH PARA DESPLEGAR CATALOGO ZAPATOS 
 infoJson= fetch(`../javascript/productos.json`)
 .then((res)=>res.json())
 .then((data=>{
@@ -252,7 +252,7 @@ infoJson= fetch(`../javascript/productos.json`)
     })
 }))
 
-
+productos.push(stringify(infoJson.data))
 
 
 
