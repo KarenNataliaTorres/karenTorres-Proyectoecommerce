@@ -292,3 +292,8 @@ fieldset{
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
 }
+/**/
+#Whatsapp img{
+width: 50px;
+height: auto;
+}
