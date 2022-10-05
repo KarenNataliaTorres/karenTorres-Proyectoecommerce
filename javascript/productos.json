@@ -1,0 +1,98 @@
+[
+    {
+        "nombre":"Zapatos acordonados negros", 
+        "id":"wideLeg2",
+        "img":"https://f.fcdn.app/imgs/29dd64/www.stadium.com.uy/std/5907/original/catalogo/146.210471034/700_600/zapato-billie-acordonado-black-pattent.jpg", 
+        "talles":"talles 35-40",
+        "precio":1200,
+        "cantidad":10
+    },
+    {
+        "nombre":"Championes Deportivos Rosa", 
+        "id":"skinny2",
+        "img":"https://hushpuppiesuy.vtexassets.com/arquivos/ids/1604058/HP21001113145_325_1.jpg?v=1751322482", 
+        "talles":"talles 35-40",
+        "precio":1300,
+        "cantidad":10
+        },
+    {
+        "nombre":"Championes Gamuza Camel", 
+        "id":"Oxford2",
+        "img":"https://http2.mlstatic.com/D_NQ_NP_998354-MLU50054377019_052022-W.jpg", 
+        "talles":"talles 35-40",
+        "precio":1250,
+        "cantidad":10
+    },
+    {
+        "nombre":"Tacones Rosa", 
+        "id":"engomadoN2",
+        "img":"https://bizarro.vteximg.com.br/arquivos/ids/715261-1000-1000/ZAPATOS-MUJER-ERIKA-7286-CUE-ECOLOG-VIZZANO_30847.jpg", 
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+    },
+    {
+        "nombre":"Botas media caña camel", 
+        "id":"engomadoV2",
+        "img":"https://zapatoscastilla.com/wp-content/uploads/venta-zapatos-mujer-hombre-2.jpg", 
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+        },
+    {
+        "nombre":"Championes pitillos", 
+        "id":"engomadoC2",
+        "img":"https://catchalot.es/img/cms/zapatos-pitillos-mujer-SS22.jpg", 
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+    },
+    {
+        "nombre":"Botas Texanas blanco y negro", 
+        "id":"pufferN2",
+        "img":"https://http2.mlstatic.com/D_NQ_NP_864479-MLU50186714409_062022-W.jpg", 
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+    },
+    {
+        "nombre":"Bucaneras con tacos", 
+        "id":"PufferR2",
+        "img":"https://i.pinimg.com/originals/c6/a5/14/c6a51469ff330e236c352cf19a7e41e5.jpg", 
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+        },
+    {
+        "nombre":"Bucaneras bajas", 
+        "id":"pufferC2",
+        "img":"https://static.zara.net/photos///2021/I/1/1/p/1013/810/040/2/w/220/1013810040_1_1_1.jpg?ts=1636045253745",
+        "talles":"talles 35-40",
+        "precio":2200,
+        "cantidad":10
+    },
+    {
+        "nombre":"Sandalias rosa metálico", 
+        "id":"CuerinaN2",
+        "img":"https://www.lidl.es/media/product/0/0/4/3/7/5/9/sandalias-rosa-metalico-para-mujer-zoom.jpg", 
+        "talles":"talles 35-40",
+        "precio":2500,
+        "cantidad":10
+    },
+    {
+        "nombre":"Sandalias plataforma Negras", 
+        "id":"CuerinaC2",
+        "img":"https://static.xtistore.com/media/catalog/product/cache/89ca45925e63695d1a57ad0812c9c48d/xti3/04/04447902_39.JPG", 
+        "talles":"talles XL,L,M,S",
+        "precio":2200,
+        "cantidad":10
+        },
+    {
+        "nombre":"Sandalias de tira blancas", 
+        "id":"CuerinaP2",
+        "img":"https://tonipons.com/media/catalog/product/cache/52b8757a349ef7d6970c901319a278ed/1/6/1647964053_brit-lz_blanc__1.1261.jpg", 
+        "talles":"talles XL,L,M,S",
+        "precio":2300,
+        "cantidad":10
+    }
+]

@@ -23,10 +23,24 @@ text-decoration: none;
       justify-items: center;
       gap: 1em;
   }
+  .containerFetch{
+    display: grid;
+    grid-template-columns: 1fr ;
+    margin: 1em;
+    justify-items: center;
+    gap: 1em;
+}
   }
   
   @media screen and (min-width:390px) and (max-width: 768px) {
       #container{
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        margin: 1em;
+        justify-items: center;
+        gap: 1em;
+    }
+    .containerFetch{
         display: grid;
         grid-template-columns: 1fr 1fr ;
         margin: 1em;
@@ -48,6 +62,8 @@ text-decoration: none;
 .catalogo_title{
     text-align: center;
     padding: 30px;
+    background-color: rgba(0, 0, 0, 0.276);
+    color: white;
 }
 .catalogo{
     display: flex;
@@ -67,7 +83,13 @@ text-decoration: none;
     justify-items: center;
     gap: 1em;
 }
-
+.containerFetch{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1em;
+    justify-items: center;
+    gap: 1em;
+}
 /*ajuste de imagenes tarjetas*/
 .ajusteImagen{
     width: 230px;
@@ -217,3 +239,56 @@ width: 30px;
     align-items: center;
 }
 
+/*ESTILOS FORMULARIO CONTACTO*/
+.fondo{
+    background-image: url("https://img.freepik.com/foto-gratis/morena-palida-moda-vestido-verde-largo-chaqueta-negra-gafas-sol-pie-calle-dia-contra-pared-edificio-ciudad-luz_197531-24468.jpg?w=2000");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+h5{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+fieldset{
+    color: white;
+    display: grid;
+    width: 22rem;
+    height: 25rem;
+    margin: auto;
+    margin-top: 10rem;
+    background-color: rgba(0, 0, 0, 0.705);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 1px -1px 17px 0px rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    padding: 10px;
+}
+.box input{
+    width: 280px;
+    height: 20px;
+    margin: 4px;
+}
+.box textarea{
+    resize: none;
+    width: 280px;
+    height:200px ;
+    margin: 5px;
+}
+.box button{
+    margin-left: 5rem;
+    background-color: #063bdb;
+    border: 0px;
+    padding: 10px 40px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}

@@ -230,3 +230,36 @@ function ejecutarCompra(){
         }
       })
 }
+
+//FETCH
+infoJson= fetch(`../javascript/productos.json`)
+.then((res)=>res.json())
+.then((data=>{
+    data.forEach(product => {
+        const card = `
+            <div class="card catalogo_tarjeta efectoTarjeta " style="width: 18rem;">
+              <img src=${product.img} class="card-img-top ajusteImagen" alt="foto del producto">
+              <div class="card-body">
+               <h5 class="card-title">${product.nombre}</h5>
+               <p class="card-text">${product.talles}</p>
+               <button id=${product.id} class="btn btn-primary class="boton-agregar"">Agregar al carrito $${product.precio}</button>
+              </div>
+            </div>
+        `
+        const grillaProductos = document.getElementsByClassName("containerFetch")[0]
+        
+        grillaProductos.innerHTML += card         
+    })
+}))
+
+//FORMULARIO DE CONTACTO
+const evento = document.getElementById('send')
+const enviarFormulario =() => {
+        let nombre = document.getElementById('nombres').value;
+        let apellido = document.getElementById('apellidos').value;
+        let mensaje = document.getElementById('mensaje').value;
+        let numero= 59894407353;
+        let win= window.open(`https://wa.me/${numero}?text=Hola%20mi%20nombre%20es%20${nombre}%20${apellido}, Asunto:%20${mensaje}`,'_blank');      
+}
+evento.addEventListener('click', enviarFormulario)
+
