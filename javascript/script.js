@@ -232,10 +232,11 @@ function ejecutarCompra(){
 }
 
 //FETCH PARA DESPLEGAR CATALOGO ZAPATOS 
+const grillaProductos = document.getElementById("containerFetch")
 fetch(`/javascript/productos.json`)
 .then((res)=>res.json())
 .then((data=>{
-    const grillaProductos = document.getElementById("containerFetch")
+    
     data.forEach(product => {
         const card = `
             <div class="card catalogo_tarjeta efectoTarjeta " style="width: 18rem;">
@@ -247,10 +248,6 @@ fetch(`/javascript/productos.json`)
               </div>
             </div>
         `        
-        grillaProductos.innerHTML += card         
+        grillaProductos.innerHTML += card  
     })
 }))
-
-
-
-
