@@ -235,6 +235,7 @@ function ejecutarCompra(){
 infoJson= fetch(`../javascript/productos.json`)
 .then((res)=>res.json())
 .then((data=>{
+    const grillaProductos = document.getElementById("containerFetch")
     data.forEach(product => {
         const card = `
             <div class="card catalogo_tarjeta efectoTarjeta " style="width: 18rem;">
@@ -245,9 +246,7 @@ infoJson= fetch(`../javascript/productos.json`)
                <button id=${product.id} class="btn btn-primary class="boton-agregar"">Agregar al carrito $${product.precio}</button>
               </div>
             </div>
-        `
-        const grillaProductos = document.getElementsByClassName("containerFetch")[0]
-        
+        `        
         grillaProductos.innerHTML += card         
     })
 }))
