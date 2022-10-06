@@ -5,12 +5,33 @@ body{
 a{
 text-decoration: none;
 }
+@import url("https://fonts.googleapis.com/css2?family=Italiana&display=swap"); /*font-family: italiana*/
+
 /*HEADER*/
 .main_header_title{
     background-color: black;
     text-align: center;
     color: white;
     margin-bottom: 0px;
+}
+/*carrusel*/
+.carousel-item{
+    height: 600px;
+}
+.carousel-item div a {
+    background-color: rgba(70, 62, 62, 0.4);
+    font-size: 4.4rem;
+    font-family: 'Tangerine', serif;
+    text-shadow: 4px 4px 4px #aaa;
+    border-top: 0.28rem double white;
+    border-bottom: 0.28rem double white;
+    margin-top: 0rem;
+    transition: font-size 2s; /* transicion para agrandar texto portada*/
+    display: grid;
+    align-content: center;
+  }
+.active{
+    height: 600px;
 }
 
 /*media query*/
@@ -22,18 +43,18 @@ text-decoration: none;
       margin: 1em;
       justify-items: center;
       gap: 1em;
-  }
-  #containerFetch{
+    }
+    #containerFetch{
     display: grid;
     grid-template-columns: 1fr ;
     margin: 1em;
     justify-items: center;
     gap: 1em;
+    }
 }
-  }
   
   @media screen and (min-width:390px) and (max-width: 768px) {
-      #container{
+    #container{
         display: grid;
         grid-template-columns: 1fr 1fr ;
         margin: 1em;
@@ -48,8 +69,57 @@ text-decoration: none;
         gap: 1em;
     }
     }
-
+/*mediaquery carrusel*/
+@media screen and (max-width: 390px) {
+    .carousel-item {
+      text-align: center;
+      -moz-text-align-last: center;
+           text-align-last: center;
+      color: beige;
+      height: 32.22rem;
+      background-size: cover;
+      text-align: center;
+    }
+    .carousel-item img {
+      -o-object-fit: cover;
+         object-fit: cover;
+      width: 100%;
+      height: 100vh;
+    }
+    .carousel-item a {
+      font-size: 2.78rem;
+    }
+    .carousel-item a:hover {
+      font-size: 3rem;
+    }
+   
+  }
+  @media screen and (min-width:390px) and (max-width: 768px)  {
+    .carousel-item {
+      text-align: center;
+      -moz-text-align-last: center;
+           text-align-last: center;
+      color: beige;
+      height: 32.22rem;
+      background-size: cover;
+      text-align: center;
+    }
+    .carousel-item img {
+      -o-object-fit: cover;
+         object-fit: cover;
+      width: 100%;
+      height: 100vh;
+    }
+    .carousel-item a {
+      font-size: 2.78rem;
+    }
+    .carousel-item a:hover {
+      font-size: 3rem;
+    }
+   
+  }
 /*CATALOGO*/
+
 .card{
     width: var(--max);
 }
@@ -83,12 +153,37 @@ text-decoration: none;
     justify-items: center;
     gap: 1em;
 }
+@media screen and (max-width: 390px) {
+    #container {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+}
+@media screen and (min-width:390px) and (max-width: 768px) {
+    #container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+}
+
 #containerFetch{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin: 1em;
     justify-items: center;
     gap: 1em;
+}
+@media screen and (max-width: 390px) {
+    #containerFetch {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+}
+@media screen and (min-width:390px) and (max-width: 768px) {
+    #containerFetch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
 }
 /*ajuste de imagenes tarjetas*/
 .ajusteImagen{
@@ -172,7 +267,7 @@ width: 30px;
 .modal-carrito {
     position: relative;
     background-color: white;
-    min-width: 500px;
+    min-width: 200px;
     padding: 20px;
     margin-top: -100%;
     transition: all .5s;
@@ -210,10 +305,11 @@ width: 30px;
     border-left: 5px solid rgb(230, 173, 205);
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
-    margin: 5px 0;
+    margin: 3px ;
     padding: 5px 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
 }
 .productoEnCarrito:hover {
     border-left: 5px solid royalblue;
@@ -256,7 +352,8 @@ fieldset{
     width: 22rem;
     height: 25rem;
     margin: auto;
-    margin-top: 10rem;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
     background-color: rgba(0, 0, 0, 0.705);
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -296,4 +393,38 @@ fieldset{
 #Whatsapp img{
 width: 50px;
 height: auto;
+}
+
+/*footer*/
+
+#footer{
+    background-color: #00000080;
+    background-image: url(https://images.vexels.com/media/users/3/226023/raw/2a23d784a43c1961a436643a7df1ec99-diseno-de-estampado-de-cebra.jpg);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+       
+}
+.mediosDePago{
+    background-color: rgba(0, 0, 0, 0.545);
+    padding: 20px;
+}
+.mediosDePago ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 30px;
+    
+}
+@media screen and (max-width: 390px) {
+    .mediosDePago ul li img {
+      height: 12px;
+      gap: 2px;
+    }
 }
