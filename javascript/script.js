@@ -252,7 +252,6 @@ infoJson= fetch(`../javascript/productos.json`)
     })
 }))
 
-productos.push(stringify(infoJson.data))
 
 
 
