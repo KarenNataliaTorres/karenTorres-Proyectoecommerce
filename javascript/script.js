@@ -233,7 +233,7 @@ function ejecutarCompra(){
 
 //FETCH PARA DESPLEGAR CATALOGO ZAPATOS 
 const grillaProductos = document.getElementById("containerFetch")
-fetch(`../../productos.json`)
+fetch(`../productos.json`)
 .then((res)=>res.json())
 .then((data=>{
     
