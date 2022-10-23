@@ -1,4 +1,4 @@
-// ***** CLASE PRODUCTOS *****
+// ***** CLASE PARA CREAR OBJETO DE PRODUCTO *****
 
 class Producto{
     constructor(nombre, id , img, desc= '', precio, cantidad ){
@@ -29,14 +29,14 @@ class Producto{
         const container = document.getElementById(`container`)
         container.innerHTML += card 
     }
-    agregarEvento(){                    //METODO PARA QUE AL HACER CLICK SE AGREGUEN PRODUCTOS AL CARRITO
+    agregarEvento(){    //METODO PARA QUE AL HACER CLICK SE AGREGUEN PRODUCTOS AL CARRITO
         const btnAgregar = document.getElementById(this.id)
         const productoEncontrado = productos.find(productos => productos.id === this.id)
         btnAgregar.addEventListener(`click`,()=>agregarAlCarrito(productoEncontrado))
     }    
 
 }
-//  **** PRODUCTOS ****
+//  **** PRODUCTOS CREADOS POR CLASE****
 
 //PANTALONES JEAN 
 const pantalonJeanWideLeg=new Producto("Pantalon Jean WIDE leg","wideLeg","https://f.fcdn.app/imgs/40d236/phirastore.com.uy/phiruy/741f/original/catalogo/w244_w244_1/460x690/jean-wide-leg-jean-wide-leg.jpg","talles XL,L,M,S", 1200,10)
@@ -46,7 +46,7 @@ const pantalonJeanOxford=new Producto("Pantalon Jean Oxford","Oxford","https://f
 //PANTALON ENGOMADO NEGRO
 const pantalonEngomado=new Producto("Pantalon Engomado Negro","engomadoN","https://www.distritomoda.com.ar/sites/default/files/styles/producto_interior/public/imagenes/ce62ac46-a7f7-4f89-864d-5f44ddbef68e_1651452132.jpeg?itok=xT8_rKAh","talles XL,L,M,S", 2200,10)
 const pantalonEngomadoVerde=new Producto("Pantalon Engomado Verde","engomadoV","https://f.fcdn.app/imgs/60f2cd/www.puntored.uy/preduy/80af/original/catalogo/602221300705_01_1/2000-2000/pantalon-engomado-pierna-ancha-7-8-simone-verde.jpg","talles XL,L,M,S", 2200,10)
-const pantalonEngomadoCamel=new Producto("Pantalon Engomado Camel","engomadoC","https://www.babilonia.com.uy/wp-content/uploads/2022/03/cul2-min.jpg","talles XL,L,M,S", 2200,10)
+const pantalonEngomadoCamel=new Producto("Pantalon Engomado Camel","engomadoC","https://d2r9epyceweg5n.cloudfront.net/stores/001/214/457/products/pantalon-engomado-chupin-produccion-pacca-91-172cdf553ab620bed116551357248142-1024-1024.jpeg","talles XL,L,M,S", 2200,10)
 
 //CAMPERAS PUFFER
 const camperaPufferNegra=new Producto("Campera Puffer color negro","pufferN","https://d2r9epyceweg5n.cloudfront.net/stores/001/412/982/products/img-20220206-wa0053-56db5973905867cc5b16448902156847-1024-1024.jpg","talles XL,L,M,S", 2200,10)
@@ -66,19 +66,18 @@ camperaPufferRosa.cambiarCantidad(3);
 camperaPufferCamel.cambiarPrecio(2650)
 
 
-// **** CARRITO DE COMPRAS ****//
+// **** CREACION DE CARRITO DE COMPRAS ****//
 let productos = [];
 let carrito =[];
+// CREACIÓN DE CONSTANTES PARA VISUALIZAR MODAL EMERGENTE DEL CARRITO 
 const contenedorCarrito = document.getElementById('carrito-contenedor')
 const botonVaciar = document.getElementById('vaciar-carrito')
-const contadorCarrito = document.getElementById('cartCounter')
-
-//CONSTANTES
+const contadorCarrito = document.getElementById('cartCounter') //CONTADOR EN ICONO CARRITO
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
-//json
+//json para manipular datos productos en carrito
 document.addEventListener('DOMContentLoaded', () => {
      if (localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'))
@@ -97,7 +96,7 @@ botonVaciar.addEventListener('click', () => {
 productos.push(pantalonJeanWideLeg, pantalonJeanSkinny, pantalonJeanOxford, pantalonEngomado, pantalonEngomadoVerde, pantalonEngomadoCamel,camperaPufferNegra, camperaPufferRosa, camperaPufferCamel,camperaCuerinaNegra,camperaCuerinaCamel,camperaCuerinaPlatinada)
 console.log(productos)
 
-//A CADA PRODUCTO SE LE APLICA DESPLEGAR PRODUCTO
+//A CADA PRODUCTO DE VESTIMENTA SE LE APLICA DESPLEGAR PRODUCTO
 productos.forEach(e =>{
     e.desplegarProductos()
 })
@@ -231,7 +230,7 @@ function ejecutarCompra(){
       })
 }
 
-//FETCH PARA DESPLEGAR CATALOGO ZAPATOS 
+//FETCH PARA DESPLEGAR PRÓXIMO CATALOGO DE ZAPATOS 
 const grillaProductos = document.getElementById("containerFetch")
 fetch(`../productos.json`)
 .then((res)=>res.json())
@@ -239,15 +238,15 @@ fetch(`../productos.json`)
     
     data.forEach(product => {
         const card = `
-            <div class="card catalogo_tarjeta efectoTarjeta " style="width: 18rem;">
+            <div class="card catalogo_tarjeta efectoTarjeta-2 " style="width: 18rem;">
               <img src=${product.img} class="card-img-top ajusteImagen" alt="foto del producto">
               <div class="card-body">
                <h5 class="card-title">${product.nombre}</h5>
                <p class="card-text">${product.talles}</p>
-               <button id=${product.id} class="btn btn-primary class="boton-agregar"">Agregar al carrito $${product.precio}</button>
               </div>
             </div>
         `        
-        grillaProductos.innerHTML += card  
-    })
+        grillaProductos.innerHTML += card 
+                  
+    }) 
 }))

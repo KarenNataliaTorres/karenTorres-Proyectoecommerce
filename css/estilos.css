@@ -193,10 +193,19 @@ text-decoration: none;
     margin: 5px;
     position: relative;
 }
+.efectoTarjeta{
+    text-align: center;
+}
 .efectoTarjeta:hover{
     border: 5px solid rgb(82, 62, 213) ;
     transform: scale(1.05, 1.05);
     transition: 1s;
+}
+.efectoTarjeta-2{
+    background-color: beige;
+    border: 2px solid #aaa ;
+    gap: 5px;
+    text-align: center;
 }
 
 
@@ -333,6 +342,7 @@ width: 30px;
     justify-content: center;
     align-content: center;
     align-items: center;
+    color: white;
 }
 
 /*ESTILOS FORMULARIO CONTACTO*/
